@@ -107,8 +107,11 @@ void updateRecord(FILE *fPtr)
     struct clientData client = {0, "", "", 0.0};
 
     // obtain number of account to update
-    printf("%s", "Enter account to update ( 1 - 100 ): ");
-    scanf("%d", &account);
+    if (account < 1 || account > 100)
+{
+    printf("Invalid account number. Please enter a value between 1 and 100.\n");
+    return;
+}
 
     // move file pointer to correct record in file
     fseek(fPtr, (account - 1) * sizeof(struct clientData), SEEK_SET);

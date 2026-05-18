@@ -149,8 +149,11 @@ void deleteRecord(FILE *fPtr)
     unsigned int accountNum;                        // account number
 
     // obtain number of account to delete
-    printf("%s", "Enter account number to delete ( 1 - 100 ): ");
-    scanf("%d", &accountNum);
+    if (accountNum < 1 || accountNum > 100)
+{
+    printf("Invalid account number. Please enter a value between 1 and 100.\n");
+    return;
+}
 
     // move file pointer to correct record in file
     fseek(fPtr, (accountNum - 1) * sizeof(struct clientData), SEEK_SET);
@@ -178,8 +181,11 @@ void newRecord(FILE *fPtr)
     unsigned int accountNum; // account number
 
     // obtain number of account to create
-    printf("%s", "Enter new account number ( 1 - 100 ): ");
-    scanf("%d", &accountNum);
+    if (accountNum < 1 || accountNum > 100)
+{
+    printf("Invalid account number. Please enter a value between 1 and 100.\n");
+    return;
+}
 
     // move file pointer to correct record in file
     fseek(fPtr, (accountNum - 1) * sizeof(struct clientData), SEEK_SET);
